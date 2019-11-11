@@ -6,14 +6,9 @@ Use the magic of AI to learn more about your data. Drag your data in, and see Gl
 
 
 ### Setup
-You can get up and running quickly with [Docker](https://docs.docker.com/docker-for-mac/install/). Once you have docker running on your computer, you can run the following command to build Glint:
+You can get up and running quickly with [Docker](https://docs.docker.com/docker-for-mac/install/). Once you have docker running on your computer, you can run the following command to build and run Glint:
 ```bash
-docker build -t glint .
-```
-
-To run Glint, you will need to run the following command:
-```bash
-docker run -p 5000:5000 glint
+docker-compose up
 ```
 
 You can now access it through [your browser](http://localhost:5000) 😄
