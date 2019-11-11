@@ -24,7 +24,7 @@ app = Flask(__name__,
 CORS(app)
 
 # redis config
-r = redis.Redis(host='localhost', port=6379, db=0)
+r = redis.Redis(host='redis', port=6379, db=0)
 
 # upload file config
 UPLOAD_FOLDER = 'data/'
@@ -99,6 +99,11 @@ def get_insights(insight):
     """Returns static insights after analysis has been completed"""
     # send static file from insights directory
     return send_from_directory('insights', insight)
+
+
+@app.route('/test')
+def test():
+    return 'Hello docker'
 
 
 @app.route('/', defaults={'path': ''})
