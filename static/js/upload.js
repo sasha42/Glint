@@ -44,7 +44,7 @@ class Contact extends React.Component {
             <p className="ant-upload-drag-icon">
                 <Icon type="inbox" />
             </p>
-            <p className="ant-upload-text">Drag and drop a file or click to upload</p>
+            <p className="ant-upload-text">Drag and drop data</p>
             <p className="ant-upload-hint">
                 Supported filetypes .csv, .json, .xls, .xslx
             </p>

@@ -24,8 +24,10 @@
   },
   "dependencies": {
     "antd": "^3.24.1",
+    "file-loader": "^4.2.0",
     "history": "^4.10.1",
     "npm": "^6.11.3",
-    "react-router-dom": "^5.1.0"
+    "react-router-dom": "^5.1.0",
+    "url-loader": "^2.2.0"
   }
 }

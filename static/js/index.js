@@ -8,29 +8,35 @@ import Analysis from './analysis'
 import Upload from './upload'
 import Notfound from './notfound'
 
-import { Layout } from 'antd';
-const { Header, Content } = Layout;
+import { Row, Col } from 'antd';
+
+import logo from './logo-small.png';
 
 // history hack
 export const history = createBrowserHistory();
 
 const routing = (
   <Router history={history}>
-    <Layout className="layout">
-    <Header>
-      <div className="logo">GLINT</div>
-    </Header>
-    <Content style={{ padding: '0 50px' }}>
-      <br />
-      <div style={{ background: '#fff', padding: 24 }}>
-        <Switch>
-          <Route exact path="/" component={Upload} />
-          <Route path="/analysis/:id" component={Analysis} />
-          <Route component={Notfound} />
-        </Switch>
-      </div>
-    </Content>
-  </Layout>
+      <Row type="flex" justify="center">
+        <Col span={16}>
+        <Col span={3}>
+          <div>
+            <img src={logo} alt="Logo" style={{width: '180px', padding: '24'}} />
+          </div>
+          </Col>
+        </Col>
+      </Row>
+      <Row type="flex" justify="center">
+        <Col span={16}>
+        <div style={{ background: '#fff', padding: 24 }}>
+          <Switch>
+            <Route exact path="/" component={Upload} />
+            <Route path="/analysis/:id" component={Analysis} />
+            <Route component={Notfound} />
+          </Switch>
+        </div>
+        </Col>
+      </Row>
   </Router>
 )
 

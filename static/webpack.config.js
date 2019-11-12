@@ -22,11 +22,18 @@ const config = {
        query: {
            presets: ['es2015', 'react']
         }
-	  },
-      {
-       test: /\.css$/,
-       loader: 'style-loader!css-loader?modules'
-      }]
+    },
+    {
+      test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+      loader: require.resolve('url-loader'),
+      options: {
+        limit: 100000,
+        name: 'static/media/[name].[hash:8].[ext]',
+    }},
+    {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader?modules'
+    }]
   }
 };
 
