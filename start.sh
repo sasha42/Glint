@@ -2,7 +2,7 @@
 
 # Start the app
 echo "Starting APP"
-/opt/venv/bin/python app.py &
+/opt/venv/bin/python -u app.py &
 status=$?
 echo "$status"
 if [ $status -ne 0 ]; then
@@ -12,7 +12,7 @@ fi
 
 # Start the update
 echo "Starting UPDATE"
-/opt/venv/bin/python update.py &
+/opt/venv/bin/python -u update.py &
 status=$?
 echo "$status"
 if [ $status -ne 0 ]; then

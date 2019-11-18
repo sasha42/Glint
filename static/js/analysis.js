@@ -48,7 +48,7 @@ class Analysis extends React.Component {
 
 	fetch_insight(insight) {
         console.log(`Analysis: fetching insights from ${insight}`)
-        fetch(api_endpoint+insight)
+        fetch(api_endpoint+insight+'.json')
             .then(response => response.json())
             .then(data => {this.process_insight(data)});
     }

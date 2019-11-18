@@ -1,4 +1,8 @@
 import React from 'react';
+import Iframe from 'react-iframe'
+
+// get current domain as api_endpoint
+const api_endpoint = window.location.origin + '/';
 
 class Insight extends React.Component {
     constructor(props) {
@@ -32,6 +36,21 @@ class Insight extends React.Component {
         return <p>{insight_data.text}</p>
     }
     
+    extract_kepler_data(insight_data) {
+        console.log('Insight: checking kepler')
+        console.log(insight_data.text[1])
+        var url = insight_data.text[1]
+
+        return <Iframe url={api_endpoint+url}
+            width="100%"
+            height="450px"
+            id="myId"
+            className="myClassname"
+            display="initial"
+            position="relative"/>
+        //return <p>{insight_data.text}</p>
+    }
+
     extract_insight(insight_data) {
         console.log('Insight: about to process insight')
         console.log(insight_data)
@@ -42,6 +61,10 @@ class Insight extends React.Component {
         if (insight_data.metadata.tags.includes('text')) {
             console.log('Insight: processing as text 📝')
             return this.extract_text_data(insight_data.outputs[0])
+        }
+        if (insight_data.metadata.tags.includes('kepler')) {
+            console.log('Insight: processing as kepler 🗺')
+            return this.extract_kepler_data(insight_data.outputs[0])
         }
     }
 

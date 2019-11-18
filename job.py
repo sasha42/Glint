@@ -12,6 +12,7 @@ from traitlets.config import Config
 from nbconvert import HTMLExporter
 import papermill as pm
 import os
+import traceback
 
 
 # configure redis and data path
@@ -28,13 +29,18 @@ def run_notebook(notebook, job_id):
 
     # define output path
     notebook_name = notebook.split('.')[0]
-    output_path = f'{insights_path}{job_id}-{notebook_name}.json'
+    output_path = f'{insights_path}{job_id}-{notebook_name}'
 
-    # run notebook with papermill
+    # run notebook with papermill, passing the input filename
+    # and output path. Output html is provided for kepler.gl
+    # geospatial visualizations
     pm.execute_notebook(
         f"notebooks/{notebook}",
-        parameters = dict(file_name=f'{data_path}{data["file_name"]}'),
-        output_path = output_path
+        parameters = dict(file_name=f'{data_path}{data["file_name"]}',
+                            output_html=output_path+'.html'),
+        output_path = output_path+'.json',
+        progress_bar = False, # surpress spammy log output
+        log_output=False
     )
 
     # add insight to data
@@ -64,7 +70,12 @@ def run_analysis(data):
     for notebook in files:
         # only run notebook if it's a notebook file
         if notebook.split('.')[-1] == 'ipynb':
-            run_notebook(notebook, data["id"])
+            try:
+                print(f'RUNNING {notebook}')
+                run_notebook(notebook, data["id"])
+            except:
+                traceback.print_exc()
+                print(f'FAILED running notebook {notebook}')
 
     # get latest data
     p_data = r.get(str(data["id"]))
