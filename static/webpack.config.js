@@ -15,13 +15,32 @@ const config = {
  },
  module: {
   rules: [
-	  {
-	   test: /\.jsx?/,
-	   loader: 'babel-loader',
-	   exclude: /node_modules/,
-       query: {
-           presets: ['es2015', 'react']
+    {
+      test: /\.less$/,
+      use: [{
+        loader: 'style-loader',
+      }, {
+        loader: 'css-loader', // translates CSS into CommonJS
+      }, {
+        loader: 'less-loader', // compiles Less to CSS
+        options: {
+          modifyVars: {
+            'ant-theme-file': "; @import '" + resolve(__dirname, './styles/glint.less') + "'",
+          },
+          javascriptEnabled: true,
         }
+      }]
+    },
+	  {
+      test: /\.js?/,
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      options: {
+        presets: ['es2015', 'react'],
+        plugins: [
+          ['import', { libraryName: "antd", style: true }]
+        ]
+      },
     },
     {
       test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -29,11 +48,7 @@ const config = {
       options: {
         limit: 100000,
         name: 'static/media/[name].[hash:8].[ext]',
-    }},
-    {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader?modules'
-    }]
+    }}]
   }
 };
 
