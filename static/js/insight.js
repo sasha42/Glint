@@ -1,5 +1,6 @@
 import React from 'react';
 import Iframe from 'react-iframe'
+import FancyPlot from './plot.js'
 
 // get current domain as api_endpoint
 const api_endpoint = window.location.origin + '/';
@@ -48,7 +49,18 @@ class Insight extends React.Component {
             className="myClassname"
             display="initial"
             position="relative"/>
-        //return <p>{insight_data.text}</p>
+    }
+
+    extract_plotly_data(insight_data) {
+        console.log('Insight: checking heatmap')
+        // extract the data from the right place
+        var fudgeData = insight_data['text'][0]
+
+        // parse json
+        var parsedHeatmap = JSON.parse(fudgeData);
+
+        // return component with data and layout
+        return <FancyPlot data={parsedHeatmap.data} layout={parsedHeatmap.layout} />
     }
 
     extract_insight(insight_data) {
@@ -65,6 +77,10 @@ class Insight extends React.Component {
         if (insight_data.metadata.tags.includes('kepler')) {
             console.log('Insight: processing as kepler 🗺')
             return this.extract_kepler_data(insight_data.outputs[0])
+        }
+        if (insight_data.metadata.tags.includes('plotly')) {
+            console.log('Insight: processing as plotly 🔥')
+            return this.extract_plotly_data(insight_data.outputs[0])
         }
     }
 

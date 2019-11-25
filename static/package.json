@@ -30,7 +30,9 @@
     "file-loader": "^4.2.0",
     "history": "^4.10.1",
     "npm": "^6.11.3",
+    "plotly.js": "^1.51.1",
     "react-iframe": "^1.8.0",
+    "react-plotly.js": "^2.4.0",
     "react-router-dom": "^5.1.0",
     "url-loader": "^2.2.0"
   }
