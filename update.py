@@ -5,7 +5,7 @@ from job import run_analysis
 
 
 if __name__ == "__main__":
-    r = redis.Redis(host='redis', port=6379, db=0)
+    r = redis.from_url(os.environ.get("REDIS_URL"))
     p = r.pubsub()
     p.psubscribe('job_*')
 

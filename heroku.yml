@@ -1,0 +1,9 @@
+setup:
+  addons:
+  - plan: heroku-redis
+    as: REDIS_URL
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: python app.py
