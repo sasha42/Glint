@@ -7,3 +7,4 @@ build:
     web: Dockerfile
 run:
   web: python app.py
+  web: python update.py

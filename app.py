@@ -121,4 +121,4 @@ if __name__ == "__main__":
         sys.exit('Error connecting to redis')
 
     # start app normally
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=os.environ["PORT"])
