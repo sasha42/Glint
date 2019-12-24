@@ -2,10 +2,11 @@ import redis
 import pickle
 import time
 from job import run_analysis
+import os
 
 
 if __name__ == "__main__":
-    r = redis.from_url(os.environ.get("REDIS_URL"))
+    r = redis.from_url(os.environ.get("REDIS"))
     p = r.pubsub()
     p.psubscribe('job_*')
 
