@@ -6,5 +6,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: python app.py
-  web: python update.py
+  web: ./start.sh
