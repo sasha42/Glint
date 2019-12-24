@@ -16,7 +16,7 @@ import traceback
 
 
 # configure redis and data path
-r = redis.from_url(os.environ.get("REDIS"))
+r = redis.from_url(os.environ.get("REDIS_URL"))
 data_path = 'data/'
 insights_path = 'insights/'
 notebooks_path = 'notebooks/'

@@ -6,7 +6,7 @@ import os
 
 
 if __name__ == "__main__":
-    r = redis.from_url(os.environ.get("REDIS"))
+    r = redis.from_url(os.environ.get("REDIS_URL"))
     p = r.pubsub()
     p.psubscribe('job_*')
 

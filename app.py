@@ -24,7 +24,7 @@ app = Flask(__name__,
 CORS(app)
 
 # redis config
-r = redis.from_url(os.environ.get("REDIS"))
+r = redis.from_url(os.environ.get("REDIS_URL"))
 
 # upload file config
 UPLOAD_FOLDER = 'data/'
