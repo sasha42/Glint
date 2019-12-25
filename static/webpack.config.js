@@ -1,5 +1,19 @@
 const webpack = require('webpack');
 const resolve = require('path').resolve;
+//const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
+const dotenv = require('dotenv');
+
+
+// call dotenv and it will return an Object with a parsed key 
+const env = dotenv.config().parsed;
+  
+// reduce it to a nice object, the same as before
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 const config = {
  devtool: 'eval-source-map',
@@ -49,7 +63,13 @@ const config = {
         limit: 100000,
         name: 'static/media/[name].[hash:8].[ext]',
     }}]
-  }
+  },
+ plugins: [
+//  new LodashModuleReplacementPlugin(),
+//  new BundleAnalyzerPlugin(),
+  new webpack.DefinePlugin(envKeys),
+  new CompressionPlugin()
+ ]
 };
 
 module.exports = config;

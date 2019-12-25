@@ -5,8 +5,8 @@ const { Header, Footer, Sider, Content } = Layout;
 const { Dragger } = Upload;
 import { history } from "./index.js"
 
-// get current domain as api_endpoint
-const api_endpoint = window.location.origin + '/';
+// get api endpoint from environment variable
+const api_endpoint = process.env.API_URL + '/';
 
 const props = {
     name: 'file',

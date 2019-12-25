@@ -3,8 +3,8 @@ import Insight from './insight'
 import { history } from "./index.js"
 import { Skeleton, Result, Button } from 'antd'
 
-// get current domain as api_endpoint
-const api_endpoint = window.location.origin + '/';
+// get api endpoint from environment variable
+const api_endpoint = process.env.API_URL + '/';
 
 class Analysis extends React.Component {
     constructor(props) {

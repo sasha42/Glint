@@ -2,8 +2,8 @@ import React from 'react';
 import Iframe from 'react-iframe'
 import FancyPlot from './plot.js'
 
-// get current domain as api_endpoint
-const api_endpoint = window.location.origin + '/';
+// get api endpoint from environment variable
+const api_endpoint = process.env.API_URL + '/';
 
 class Insight extends React.Component {
     constructor(props) {
