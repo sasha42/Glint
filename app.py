@@ -63,7 +63,10 @@ def upload_file():
         else:
             return 'Invalid filetype'
 
-        return redirect(f'/data?jobId={job_id}', code=302)
+        # get the origin for a proper redirect
+        origin = request.environ.get('HTTP_ORIGIN')
+
+        return redirect(f'{origin}/data?jobId={job_id}', code=302)
  
 
 @app.route('/data')
