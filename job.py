@@ -35,7 +35,7 @@ def run_notebook(notebook, job_id):
     # and output path. Output html is provided for kepler.gl
     # geospatial visualizations
     pm.execute_notebook(
-        f"notebooks/{notebook}",
+        f"/notebooks/{notebook}",
         parameters = dict(file_name=f'{data_path}{data["file_name"]}',
                             output_html=output_path+'.html'),
         output_path = output_path+'.json',
