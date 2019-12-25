@@ -18,7 +18,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy files and folders
-WORKDIR /code
+WORKDIR /
 COPY app.py job.py update.py start.sh start.sh ./
 ADD static/ /static/
 ADD public/ /public/
