@@ -27,7 +27,7 @@ CORS(app)
 r = redis.from_url(os.environ.get("REDIS_URL"))
 
 # upload file config
-UPLOAD_FOLDER = 'data/'
+UPLOAD_FOLDER = '/data/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
