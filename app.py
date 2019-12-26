@@ -67,6 +67,8 @@ def upload_file():
         origin = request.environ.get('HTTP_ORIGIN')
 
         return redirect(f'{origin}/data?jobId={job_id}', code=302)
+        return jsonify({'error': False,
+            'jobId': job_id})
  
 
 @app.route('/data')
