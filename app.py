@@ -66,7 +66,6 @@ def upload_file():
         # get the origin for a proper redirect
         origin = request.environ.get('HTTP_ORIGIN')
 
-        return redirect(f'{origin}/data?jobId={job_id}', code=302)
         return jsonify({'error': False,
             'jobId': job_id})
  
