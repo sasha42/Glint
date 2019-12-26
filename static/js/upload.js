@@ -19,7 +19,7 @@ const props = {
         }
         if (status === 'done') {
             console.log('Upload: done uploading')
-            history.push(`/analysis/${info.file.response.id}`)
+            history.push(`/analysis/${info.file.response.jobId}`)
             message.success(`${info.file.name} file uploaded successfully.`);
         } else if (status === 'error') {
             console.log('Upload: failed to upload')
