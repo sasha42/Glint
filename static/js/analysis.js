@@ -4,7 +4,8 @@ import { history } from "./index.js"
 import { Skeleton, Result, Button } from 'antd'
 
 // get api endpoint from environment variable
-const api_endpoint = process.env.API_URL + '/';
+// FIXME: the way the api_endpoint is handled in this component
+const api_endpoint = process.env.API_URL;
 
 class Analysis extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Analysis extends React.Component {
 
 	generate_url(id) {
         // set up url parameters and fetch data
-        var url = new URL(api_endpoint+'data'),
+        var url = new URL(api_endpoint+ '/' + 'data'),
         params = {jobId: id}
         Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
 
