@@ -4,6 +4,7 @@
 
 Use the magic of AI to learn more about your data. Drag your data in, and see Glint tell a story from your CSV file. 
 
+![Glint demo video](glint-demo.gif)
 
 ### Setup
 You can get up and running quickly with [Docker](https://docs.docker.com/docker-for-mac/install/). Once you have docker running on your computer, you can run the following command to build and run Glint:
