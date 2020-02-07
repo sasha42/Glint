@@ -110,11 +110,11 @@ def test():
     return 'Hello docker'
 
 
-#@app.route('/', defaults={'path': ''})
-#@app.route('/<path:path>')
-#def react(path):
-#    """Serve the user the frontend react code"""
-#    return render_template('index.html')
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def react(path):
+    """Serve the user the frontend react code"""
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
