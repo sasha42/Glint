@@ -13,6 +13,7 @@ from nbconvert import HTMLExporter
 import papermill as pm
 import os
 import traceback
+import asyncio
 
 
 # configure redis and data path
@@ -22,7 +23,7 @@ insights_path = '/insights/'
 notebooks_path = '/notebooks/'
 
 
-def run_notebook(notebook, job_id):
+async def run_notebook(notebook, job_id):
     # get latest data
     p_data = r.get(str(job_id))
     data = pickle.loads(p_data)
@@ -66,13 +67,16 @@ def run_analysis(data):
     # get list of available notebooks
     files = os.listdir(notebooks_path)
 
+    # create a loop
+    loop = asyncio.get_event_loop()
+
     # run each available notebook
     for notebook in files:
         # only run notebook if it's a notebook file
         if notebook.split('.')[-1] == 'ipynb':
             try:
                 print(f'RUNNING {notebook}')
-                run_notebook(notebook, data["id"])
+                loop.run_until_complete(run_notebook(notebook, data["id"]))
             except:
                 traceback.print_exc()
                 print(f'FAILED running notebook {notebook}')
