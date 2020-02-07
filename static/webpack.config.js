@@ -5,7 +5,6 @@ const resolve = require('path').resolve;
 const CompressionPlugin = require('compression-webpack-plugin');
 const dotenv = require('dotenv');
 
-
 // call dotenv and it will return an Object with a parsed key 
 const env = dotenv.config().parsed;
   

@@ -2,7 +2,7 @@
 
 ## Glint uses AI to tell the story of your data. 
 
-Use the magic of AI to learn more about your data. Drag your data in, and see Glint tell a story from your CSV file. 
+Use the magic of AI to learn more about your data. Drag your data in, and see Glint tell a story from your CSV file. Please note that this is a research project, it is not advised to use this in production.
 
 ![Glint demo video](glint-demo.gif)
 
@@ -39,8 +39,23 @@ python update.py
 The frontend uses react to provide a user interface to Glint. It is compiled with webpack and then served through the flask backend - you only need to run the code below if you're going to modify the frontend.
 
 ```bash
+cd static/
 npm i
 npm run watch
+```
+
+By default, the frontend will talk to the API that is present in `static/.env`. If you would like to change this, please update the .env file and then run the following command to recompile the frontend:
+
+```bash
+cd static/
+npm run build
+```
+
+You can then run the following command to rebuild docker, which will pull the appropriate static files:
+
+```bash
+cd ..
+docker-dompose build
 ```
 
 ---
