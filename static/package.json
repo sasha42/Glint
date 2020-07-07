@@ -33,7 +33,7 @@
     "file-loader": "^4.2.0",
     "history": "^4.10.1",
     "lodash-webpack-plugin": "^0.11.5",
-    "npm": "^6.11.3",
+    "npm": "^6.14.6",
     "plotly.js": "^1.52.2",
     "plotly.js-basic-dist": "^1.51.3",
     "react-iframe": "^1.8.0",
